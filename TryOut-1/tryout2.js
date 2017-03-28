@@ -1,13 +1,15 @@
 const cheerioReq = require("cheerio-req");
 
 cheerioReq("https://refactory.id/", (err, $) => {
-    if(!err){
+    if(err){
+      console.log(err);
+    }
+    if('' == $("title")){
+      console.log('The result is not HTML');
+    }else{
       console.log('The result is HTML');
       console.log('The title is '+$("title").text());
-    }else{
-      console.log('The result is not HTML');
     }
-
 });
 
 // const tinyreq = require("tinyreq");
